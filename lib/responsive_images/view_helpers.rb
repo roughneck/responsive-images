@@ -24,7 +24,8 @@ module ResponsiveImages
     def responsive_background_image image, options={}
       # Merge any options passed with the configured options
       sizes = ResponsiveImages.options.deep_merge(options)
-      data_hash = { style: "background-image: url(#{src_path(image, sizes)})" }.merge(alternative_sizes(image, sizes))      
+      data_hash = { style: "background-image: url(#{src_path(image, sizes)})" }.merge(alternative_sizes(image, sizes))
+      data_hash.map { |key, value| "#{key}=\"#{value}\"" }.join(" ")
     end
   
     
@@ -48,7 +49,7 @@ module ResponsiveImages
       data_sizes = {}
       sizes[:sizes].each do |size, value|
         if value.present?
-          data_sizes["data-#{size}-src"] = (value == :default ? image.url : image.send(value))
+          data_sizes["data-#{size}-src"] = (value == :default ? image.url : image.send(value).url)
         else
           false
         end
