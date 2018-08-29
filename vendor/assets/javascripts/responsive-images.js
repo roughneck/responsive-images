@@ -11,6 +11,7 @@
       elements : null,
       screen_width : 0,
       screen_height : 0,
+      hotlink: null
     }
     
     var responsive_images = this;

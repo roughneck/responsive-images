@@ -3,7 +3,8 @@ module ResponsiveImages
     
     VALID_OPTION_KEYS = [
       :default,
-      :sizes
+      :sizes,
+      :hotlink
     ]
     
     attr_accessor *VALID_OPTION_KEYS
